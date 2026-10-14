@@ -1,0 +1,24 @@
+{
+  "source": "https://github.com/PC2005-cloud/dsh-pet",
+  "version": "0.3.6",
+  "original_checksums": {
+    "constants.js": "73e3fafd3c5c82762a8d45e064ada048bf01b86cf76919b371db87fcce55e948",
+    "events.js": "6e2aeaccb0bf90d051b5df9f7fed27fd17ea5bd01cb6bf0eec1d3a166a05e8bf",
+    "preload.js": "8801b31f6ec98e17fb3febf3d33251368b901f7f8b18ad0191eafb96005947c1",
+    "renderer.js": "6ce5bce21173cea42b1ce918a9e9ab234d8a11310290fc87aaea32446be54f92",
+    "pointer-target.js": "1abacab42d36f3e9c1cb785a6c19e2126a075af718a596f2c2f35aafbe60759a",
+    "host-liveness.js": "6cb68274436cbcfda99f2f991f929f8c2db596153081b107549f13d72b64c3cf",
+    "shared-core.js": "b77b1d615621d7c0e71ce9cfa0d691b5c3504a14db83c12900d6a9879f69293e",
+    "main.js": "928a0b5c3e532706d637cbf10c8ae747f1dd79bfe6cd98050fab4318a4c9ab1c",
+    "sprite.js": "f021434e09c8dc604855f346a3194525b179fea23577f6900e96cf1636d5c9f9"
+  },
+  "local_changes": [
+    "constants.js: standalone asset scheme",
+    "index.html: local-only CSP and independent adapter",
+    "index.html: renamed standalone window",
+    "sprite.js: anonymous local video loading, allowing alpha-frame verification",
+    "index.html: standalone cardinal movement policy",
+    "renderer.js: public distribution omits the unlicensed Shangshou font and uses the existing system font fallback"
+  ],
+  "assets_count": 106
+}

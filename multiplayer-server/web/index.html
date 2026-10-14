@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow"><meta name="color-scheme" content="dark"><meta name="referrer" content="no-referrer">
+<title>大肥鱼朋友牌桌</title>
+<link rel="stylesheet" href="poker.css"><script defer src="socket.io.min.js"></script><script src="stable-controls.js"></script><script type="module" src="client.js"></script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="./"><span class="brand-icon" aria-hidden="true">♠</span><span>大肥鱼朋友牌桌<small>仅限房主邀请的朋友</small></span></a><span id="connection" class="connection" role="status">正在连接…</span></header>
+<main>
+<div id="error" class="error" role="alert" hidden></div>
+<section id="entry" class="entry">
+<div class="intro"><span class="eyebrow">吃白饭的大肥鱼 · 网页牌桌</span><h1>朋友发来链接，<br>填写昵称申请入桌。</h1><p>网页与大肥鱼软件可以同桌。<br>私人邀约，需房主确认后入座。</p><div class="rule-tags"><span>免费练习分</span><span>真人多人局 20 秒</span><span>单人加机器人不限时</span></div></div>
+<div class="entry-card panel"><h2 id="entry-title">加入朋友的牌桌</h2><form id="entry-form" hidden>
+<label for="nickname">你的昵称</label><input id="nickname" maxlength="40" autocomplete="nickname" placeholder="让朋友认出你" required>
+<div id="manual-room-fields"><label for="room-code">房间码或分享链接</label><input id="room-code" autocomplete="off" spellcheck="false" placeholder="粘贴链接或房间码"></div>
+<p id="join-hint" class="muted">请使用房主发来的邀请链接，填写昵称申请入桌。</p>
+<div class="entry-actions"><button id="join" class="primary" type="submit">申请入桌</button><button id="create" type="button">创建房间</button></div>
+</form>
+</div>
+<details id="invite-builder" class="invite-builder panel"><summary>在大肥鱼软件开了房间？生成网页分享链接</summary><p class="muted">把软件“复制邀请”的内容粘贴在这里，生成链接发给朋友即可，不占用座位。</p><label for="invite-text">邀请内容或房间码</label><textarea id="invite-text" rows="3" placeholder="大肥鱼朋友牌桌
+服务器：你填写的牌桌地址
+房间码：…"></textarea><button id="make-link">生成分享链接</button><div id="generated-share" class="share-field" hidden><label for="generated-link">网页分享链接</label><input id="generated-link" readonly><button id="copy-generated">复制链接</button></div></details>
+</section>
+<section id="table" hidden>
+<section id="approval-waiting" class="panel" hidden><h2>等待房主确认</h2><p>申请已发送。请通过你们已有的联系方式告诉房主你的昵称；确认前无法查看牌局或下注。</p></section><div class="room-header"><div><span class="eyebrow">朋友牌桌</span><h1 id="room-label"></h1><p id="room-meta" class="muted"></p></div><div class="room-actions"><button id="copy-room">复制分享链接</button><button id="leave">离开牌桌</button></div></div>
+<div id="share-field" class="share-field panel" hidden><label for="share-link">把这个链接发给朋友</label><input id="share-link" readonly></div>
+<p id="notice" class="notice" role="status"></p><div id="guest-requests" class="guest-requests panel" hidden></div><div id="game-content"><details id="astra-menu" hidden><summary>astra · 单人练习</summary><p>只限一位真人与机器人练习，下一手安排优势牌型；生效一次，正常下注和结算。</p><button id="practice-next">下一手优势牌型</button><span id="practice-state" role="status"></span></details>
+<section id="lobby" class="panel"><div class="section-heading"><h2>等待朋友入座</h2><p id="rule-hint" class="muted"></p></div><p class="muted">请在开局前加入；开局后由房主重新开桌，才能加入新朋友。</p><div id="bot-controls" class="bot-controls" hidden><label for="bot-choice">人少可以添加机器人</label><select id="bot-choice"></select><button id="add-bot">添加机器人</button></div><div id="bot-list" class="bot-list"></div></section>
+<div class="table-info panel" id="table-info"></div>
+<div id="board" class="board" aria-label="公共牌"></div>
+<section id="players" class="players" aria-label="牌桌上的玩家"></section>
+<section id="guide" class="panel hand-guide"><div><span class="eyebrow">你现在的牌型</span><h2 id="made-hand">等待发牌</h2><div id="best-five" class="best-five"></div></div><div><h3 id="draw-target"></h3><p id="draw-cards" class="muted"></p><p id="draw-context" class="muted"></p></div></section>
+<section id="poker-result" class="panel results" aria-label="本手结算" hidden></section>
+<details class="panel game-log"><summary>牌局记录</summary><div id="poker-log"></div></details>
+<div id="actions" class="actions"><div id="turn-message" class="turn-message" role="status"></div><div class="action-buttons"><button id="deal" class="primary">开始对局</button><button id="fold">弃牌</button><button id="check-call" class="primary">过牌 / 跟注</button><label class="raise-input">加注到<input id="raise-amount" type="number" min="0" step="10000" inputmode="numeric"></label><button id="raise">加注</button><button id="allin">全下</button><button id="reset" class="subtle">重新开桌</button></div></div>
+</div></section>
+</main>
+<footer>私人免费练习 · 分数无财产价值，不购买、不交易、不兑换、不设奖品、不按输赢结算财物<a href="LICENSES.txt">开源许可</a></footer>
+<div id="toast" class="toast" role="status" hidden></div>
+</body></html>

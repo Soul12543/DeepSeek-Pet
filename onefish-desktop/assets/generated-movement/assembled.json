@@ -1,0 +1,364 @@
+{
+  "frameSize": [
+    640,
+    360
+  ],
+  "fps": 10,
+  "cycleFrames": 8,
+  "videoCycles": 3,
+  "commonScale": 0.6716417910447762,
+  "directions": {
+    "left": {
+      "animation": "四向移动-向左走",
+      "gif": "left.gif",
+      "sheet": "left-sheet.png",
+      "uniqueFrames": 8,
+      "frames": [
+        {
+          "file": "frames/left/frame-00.png",
+          "bounds": [
+            207,
+            66,
+            439,
+            330
+          ],
+          "sha256": "ac801b778527c41c37b77500c86a0af69e73eebae8133e063f0dc809f8cd097a"
+        },
+        {
+          "file": "frames/left/frame-01.png",
+          "bounds": [
+            199,
+            66,
+            432,
+            330
+          ],
+          "sha256": "730cb1914d5069a54cd7a87b9dac3a2082fdd3c6117ec66894e6fbac8a089450"
+        },
+        {
+          "file": "frames/left/frame-02.png",
+          "bounds": [
+            205,
+            65,
+            436,
+            331
+          ],
+          "sha256": "51204eec9cece87683329b7207922b26cd9407122a9076dfe8ad9616140a6363"
+        },
+        {
+          "file": "frames/left/frame-03.png",
+          "bounds": [
+            200,
+            64,
+            433,
+            329
+          ],
+          "sha256": "fbc9969b7015e3e5218adf8e4414a6287b4effc8458e01bba0d2fae2d61259a3"
+        },
+        {
+          "file": "frames/left/frame-04.png",
+          "bounds": [
+            207,
+            64,
+            441,
+            326
+          ],
+          "sha256": "a63162a839f8aba567b69ee2071896c402806b46eb1dd8d9b74de5215248c802"
+        },
+        {
+          "file": "frames/left/frame-05.png",
+          "bounds": [
+            204,
+            63,
+            439,
+            325
+          ],
+          "sha256": "bf3c2be8adb9511b37a5d913066b1620f766aaf9a55f10d2d2902ce8f5cebd0b"
+        },
+        {
+          "file": "frames/left/frame-06.png",
+          "bounds": [
+            205,
+            63,
+            442,
+            326
+          ],
+          "sha256": "e31c82ba1148bc7d280286a7a1e9319d4a8fd17e356ec7a04883347e67be6752"
+        },
+        {
+          "file": "frames/left/frame-07.png",
+          "bounds": [
+            204,
+            63,
+            436,
+            326
+          ],
+          "sha256": "7470f675bb910160551c53017f8a551cb20b864fd25d3e8bf8aee9b72044cb8e"
+        }
+      ]
+    },
+    "right": {
+      "animation": "四向移动-向右走",
+      "gif": "right.gif",
+      "sheet": "right-sheet.png",
+      "uniqueFrames": 8,
+      "frames": [
+        {
+          "file": "frames/right/frame-00.png",
+          "bounds": [
+            208,
+            60,
+            435,
+            329
+          ],
+          "sha256": "2012df9bcd3957d449819073a8f79943683b170e74f8f28460a12801b604301d"
+        },
+        {
+          "file": "frames/right/frame-01.png",
+          "bounds": [
+            206,
+            58,
+            433,
+            330
+          ],
+          "sha256": "1c5e9a4ad0b0f0e98f946268a92444f04ce6b13baf6a31db64ed44fb1e1b6114"
+        },
+        {
+          "file": "frames/right/frame-02.png",
+          "bounds": [
+            206,
+            58,
+            431,
+            328
+          ],
+          "sha256": "5397bc20e11abf8973832d2a436ee5eadc12dfc7935f7d506e87c16703f0fe9d"
+        },
+        {
+          "file": "frames/right/frame-03.png",
+          "bounds": [
+            205,
+            58,
+            431,
+            330
+          ],
+          "sha256": "13c3f97f5707906f927da869ea0d322f8de07c3fda5855315cb80f64102ac1ad"
+        },
+        {
+          "file": "frames/right/frame-04.png",
+          "bounds": [
+            206,
+            56,
+            432,
+            327
+          ],
+          "sha256": "32e1d80477ab8cc79369d476fce4107b1be375f6d3860a8a9ba3208c747af5e1"
+        },
+        {
+          "file": "frames/right/frame-05.png",
+          "bounds": [
+            205,
+            56,
+            430,
+            327
+          ],
+          "sha256": "ff9cc97ff2d64b48525eac019ed87684f491beec3b72d1fd19edf7410b662421"
+        },
+        {
+          "file": "frames/right/frame-06.png",
+          "bounds": [
+            204,
+            56,
+            435,
+            327
+          ],
+          "sha256": "b8583fbeea6b5719f4e14d92d88565bfeb2d6d777cf6433a94caca0ec32e0fa9"
+        },
+        {
+          "file": "frames/right/frame-07.png",
+          "bounds": [
+            209,
+            57,
+            436,
+            329
+          ],
+          "sha256": "49673417b2e89a565f00db1103a2a73a7cb819b8e309311ea2c0b74f0b9d30d1"
+        }
+      ]
+    },
+    "up": {
+      "animation": "四向移动-向上走",
+      "gif": "up.gif",
+      "sheet": "up-sheet.png",
+      "uniqueFrames": 8,
+      "frames": [
+        {
+          "file": "frames/up/frame-00.png",
+          "bounds": [
+            225,
+            59,
+            420,
+            330
+          ],
+          "sha256": "4b49ce5687e396bf2c5b2e67ca9fd48d95b1b4379b7a0ed2437ce6f6b7076509"
+        },
+        {
+          "file": "frames/up/frame-01.png",
+          "bounds": [
+            222,
+            59,
+            421,
+            329
+          ],
+          "sha256": "debc73b3a2a1f7e98798dedf71f01389ec8ae76e0beb612a630d12f97ebe887d"
+        },
+        {
+          "file": "frames/up/frame-02.png",
+          "bounds": [
+            220,
+            59,
+            420,
+            330
+          ],
+          "sha256": "17aeef6f64357381708e3023d2b86170c96192bb2520e868febd919969b3da84"
+        },
+        {
+          "file": "frames/up/frame-03.png",
+          "bounds": [
+            228,
+            57,
+            418,
+            330
+          ],
+          "sha256": "d29b59c80a803a468a57416e9d19b29307d9835e77a32dc619fa7eec0e67cd3e"
+        },
+        {
+          "file": "frames/up/frame-04.png",
+          "bounds": [
+            223,
+            57,
+            412,
+            329
+          ],
+          "sha256": "71c34d82f88ec47fa7248cfeb098dc79e81f091c50d264b24f40d1248d6280cf"
+        },
+        {
+          "file": "frames/up/frame-05.png",
+          "bounds": [
+            228,
+            55,
+            420,
+            329
+          ],
+          "sha256": "de8227cb4daadc0f7950e1ec0691f92b3d6315424e4aca33d24c229f0114b95f"
+        },
+        {
+          "file": "frames/up/frame-06.png",
+          "bounds": [
+            221,
+            55,
+            415,
+            329
+          ],
+          "sha256": "d2dc847353194190656f5b4fe4f72f913e50cf99d9addc1e8a4bbfa2e15713d9"
+        },
+        {
+          "file": "frames/up/frame-07.png",
+          "bounds": [
+            226,
+            57,
+            420,
+            329
+          ],
+          "sha256": "acef47480742ff3a0887e8adae7e2fadabad3dddc572c2e0b36746d866b9bb3e"
+        }
+      ]
+    },
+    "down": {
+      "animation": "四向移动-向下走",
+      "gif": "down.gif",
+      "sheet": "down-sheet.png",
+      "uniqueFrames": 8,
+      "frames": [
+        {
+          "file": "frames/down/frame-00.png",
+          "bounds": [
+            215,
+            58,
+            427,
+            323
+          ],
+          "sha256": "000ecf596894ec9a19c79160d80ebb2843a8e159991ec09a378fa25c40c40243"
+        },
+        {
+          "file": "frames/down/frame-01.png",
+          "bounds": [
+            215,
+            58,
+            429,
+            330
+          ],
+          "sha256": "7f44154c0edef34d8f9abb14f32ae1b091271e99a54f7903ab1561a8abcfe10d"
+        },
+        {
+          "file": "frames/down/frame-02.png",
+          "bounds": [
+            211,
+            53,
+            429,
+            324
+          ],
+          "sha256": "372d8b4cca866e3f74779dee1e73dd927d9599c5aafc074905a57c617d8eb0b6"
+        },
+        {
+          "file": "frames/down/frame-03.png",
+          "bounds": [
+            206,
+            53,
+            428,
+            320
+          ],
+          "sha256": "f410ba51829acda8e1b8eb9e46a7712467dc50cd8a14b8c2ebc8d46875c02c36"
+        },
+        {
+          "file": "frames/down/frame-04.png",
+          "bounds": [
+            210,
+            53,
+            433,
+            321
+          ],
+          "sha256": "179d1abf0b798f3312328b7dcd6fc42adb42a622daac2622634162b0882a22c3"
+        },
+        {
+          "file": "frames/down/frame-05.png",
+          "bounds": [
+            208,
+            54,
+            432,
+            321
+          ],
+          "sha256": "c647855c70680b7cb017f97184c199a3eba92ff2ae2aae51ee326ad7a31ae785"
+        },
+        {
+          "file": "frames/down/frame-06.png",
+          "bounds": [
+            207,
+            52,
+            429,
+            319
+          ],
+          "sha256": "b115c3204dd052110bbc0fd442c83eace5c7cf20255e3c34d4d8104c92a97592"
+        },
+        {
+          "file": "frames/down/frame-07.png",
+          "bounds": [
+            212,
+            51,
+            431,
+            319
+          ],
+          "sha256": "3fc61e817784f8183c864d9beabef8518c9ec8d2b5cf0f4d6b0226702b4150b4"
+        }
+      ]
+    }
+  }
+}

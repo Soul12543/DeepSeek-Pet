@@ -1,0 +1,38 @@
+{
+  "method": "built-in imagegen",
+  "referenceImages": [
+    "reference/idle.png",
+    "reference/run-left.png"
+  ],
+  "grid": {
+    "columns": 4,
+    "rows": 2,
+    "frames": 8
+  },
+  "directions": {
+    "left": {
+      "prompt": "left-prompt.txt",
+      "sheet": "left-sheet.png",
+      "gif": "left.gif",
+      "generatedSource": "${USER_HOME}/.codex/generated_images/01a11fb7-1dfa-7c93-81e6-4ae5f2b2ea62/exec-746cd26a-a47b-48b2-8fe0-ef5247f96a0e.png"
+    },
+    "right": {
+      "prompt": "right-prompt.txt",
+      "sheet": "right-sheet.png",
+      "gif": "right.gif",
+      "generatedSource": "${USER_HOME}/.codex/generated_images/01a11fb7-1dfa-7c93-81e6-4ae5f2b2ea62/exec-fa5b3074-ac10-4fb9-a1d1-e34fb3897bbe.png"
+    },
+    "up": {
+      "prompt": "up-prompt.txt",
+      "sheet": "up-sheet.png",
+      "gif": "up.gif",
+      "generatedSource": "${USER_HOME}/.codex/generated_images/01a11fb7-1dfa-7c93-81e6-4ae5f2b2ea62/exec-9cc6d505-cd4b-40c0-93d4-0eddfb8a2559.png"
+    },
+    "down": {
+      "prompt": "down-prompt.txt",
+      "sheet": "down-sheet.png",
+      "gif": "down.gif",
+      "generatedSource": "${USER_HOME}/.codex/generated_images/01a11fb7-1dfa-7c93-81e6-4ae5f2b2ea62/exec-a81e5fd9-4ada-430f-987f-3e9a82dd4862.png"
+    }
+  }
+}

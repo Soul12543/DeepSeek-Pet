@@ -1,0 +1,17 @@
+{
+  "codex": {
+    "bundleId": "com.openai.codex",
+    "iconResource": "electron.icns",
+    "source": "本机已安装应用的原始图标；仅用于标识对应应用"
+  },
+  "claude": {
+    "bundleId": "com.anthropic.claudefordesktop",
+    "iconResource": "electron.icns",
+    "source": "本机已安装应用的原始图标；仅用于标识对应应用"
+  },
+  "dsh": {
+    "bundleId": "ai.deepseek.dsh.desktop.next",
+    "iconResource": "icon.icns",
+    "source": "本机已安装应用的原始图标；仅用于标识对应应用"
+  }
+}

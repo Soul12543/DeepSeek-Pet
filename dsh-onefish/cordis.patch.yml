@@ -1,0 +1,10 @@
+# dsh-onefish 的 bundle patch —— 把「一条鱼」挂进 DSH 配置树。
+#
+# - insert：往配置树里添加一条宿主插件行
+# - id 必须全局唯一且与包名一致（商城/加载器按 id 定位条目）
+# - name: 'dsh-onefish' 解析到包入口 lib/index.js（宿主半侧）
+# - package.json 声明了 dsh.client，因此同一包会被扫描为「浏览器插件」，
+#   其 lib/client.js 通过 /plugins/dsh-onefish/client.js 提供给页面
+- insert:
+    - id: dsh-onefish
+      name: 'dsh-onefish'

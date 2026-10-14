@@ -1,0 +1,12 @@
+{
+  "name": "onefish-desktop",
+  "productName": "吃白饭的大肥鱼",
+  "version": "0.10.1",
+  "private": true,
+  "main": "main.cjs",
+  "description": "独立桌面宠物：同时查看 Codex、Claude Code Desktop 和 DSH",
+  "scripts": {
+    "test": "node --test test/*.test.cjs",
+    "build:mac": "python3 scripts/build_macos.py"
+  }
+}

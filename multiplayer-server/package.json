@@ -1,0 +1,22 @@
+{
+  "name": "onefish-poker-server",
+  "version": "0.10.1",
+  "private": true,
+  "description": "吃白饭的大肥鱼私密联机牌桌",
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node --test test/*.test.cjs",
+    "bundle-client": "node bundle-client.cjs",
+    "build-web": "node build-web.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "socket.io": "4.8.4",
+    "socket.io-client": "4.8.4"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

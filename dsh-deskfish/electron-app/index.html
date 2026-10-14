@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'" />
+<title>deskfish</title>
+<style>
+  :root{
+    --bg:rgba(13,17,26,.95);
+    --line:rgba(255,255,255,.14);
+    --fg:#e9eefb;
+    --dim:rgba(233,238,251,.58);
+    --accent:#7ea6ff;
+    --gold:#e7c76b;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:transparent;
+    font-family:"PingFang SC","Microsoft YaHei UI",ui-sans-serif,system-ui,sans-serif;
+    color:var(--fg);user-select:none;overflow:hidden}
+  #root{height:100%;border:1px solid var(--line);border-radius:18px;background:var(--bg);
+    backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 18px 48px rgba(0,0,0,.45);
+    display:flex;flex-direction:column;overflow:hidden}
+
+  header{flex:none;height:38px;display:flex;align-items:center;gap:8px;padding:0 8px 0 12px;
+    -webkit-app-region:drag;background:rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:600}
+  header .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:none}
+  header .title{white-space:nowrap}
+  header .tag{margin-left:auto;font-size:10.5px;font-weight:400;color:var(--dim);
+    border:1px solid var(--line);border-radius:999px;padding:2px 7px}
+  header button{-webkit-app-region:no-drag;appearance:none;border:none;background:transparent;
+    color:var(--dim);font:inherit;font-size:13px;width:24px;height:24px;border-radius:7px;cursor:pointer}
+  header button:hover{background:rgba(255,255,255,.10);color:#fff}
+
+  main{flex:1;min-height:0;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+  main::-webkit-scrollbar{width:8px}
+  main::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:8px}
+
+  .row{display:flex;align-items:baseline;gap:8px;font-size:12px}
+  .row .k{color:var(--dim);flex:none}
+  .row .v{margin-left:auto;font-variant-numeric:tabular-nums}
+
+  .cards{display:flex;gap:5px}
+  .card{width:30px;height:42px;border-radius:6px;border:1px solid var(--line);
+    background:linear-gradient(180deg,#fdfdff,#e8ecf7);color:#1a1f2b;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .card.red{color:#c0392b}
+  .card.back{background:linear-gradient(160deg,#2a3350,#161c2e);color:transparent;border-color:rgba(255,255,255,.22)}
+  .card.empty{background:transparent;border-style:dashed;border-color:rgba(255,255,255,.16)}
+
+  .board{display:flex;gap:5px;justify-content:center;padding:8px 0}
+  .board .card{width:34px;height:48px;font-size:14px}
+
+  .sec{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
+    border-top:1px solid rgba(255,255,255,.10);padding-top:8px;margin-top:2px}
+
+  .p{display:flex;align-items:center;gap:8px;font-size:12px;padding:5px 7px;border-radius:9px;
+    background:rgba(255,255,255,.035)}
+  .p.hero{background:rgba(126,166,255,.13);border:1px solid rgba(126,166,255,.30)}
+  .p.turn{border:1px solid rgba(231,199,107,.55)}
+  .p .who{flex:none;width:56px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .p .act{flex:1;color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+  .p .stack{margin-left:auto;font-variant-numeric:tabular-nums;flex:none}
+  .p .ai{font-size:9.5px;color:var(--gold);border:1px solid rgba(231,199,107,.35);
+    border-radius:999px;padding:1px 5px;flex:none}
+
+  .log{font-size:11px;line-height:1.75;color:var(--dim)}
+  .log div:last-child{color:var(--fg)}
+
+  .foot{flex:none;padding:7px 12px;border-top:1px solid rgba(255,255,255,.10);
+    font-size:10.5px;color:var(--dim);display:flex;gap:8px;align-items:center}
+  .foot .dot{width:6px;height:6px;border-radius:50%;background:#4ade80}
+  .foot .dot.stale{background:#f87171}
+</style>
+</head>
+<body>
+<div id="root">
+  <header>
+    <span class="dot"></span>
+    <span class="title">一条鱼 · 桌面浮层</span>
+    <span class="tag">PoC</span>
+    <button id="close" title="关闭">✕</button>
+  </header>
+  <main id="main">
+    <div class="row"><span class="k">等待宿主快照…</span></div>
+  </main>
+  <div class="foot"><span class="dot" id="beat"></span><span id="beatText">未连接</span></div>
+</div>
+
+<script>
+(function () {
+  var main = document.getElementById('main');
+  var beat = document.getElementById('beat');
+  var beatText = document.getElementById('beatText');
+  var lastAt = 0;
+
+  document.getElementById('close').addEventListener('click', function () {
+    if (window.deskfish && window.deskfish.close) window.deskfish.close();
+  });
+
+  function fmt(n) {
+    if (typeof n !== 'number' || !isFinite(n)) return '—';
+    return n.toLocaleString('en-US');
+  }
+
+  var RANK = { 14: 'A', 13: 'K', 12: 'Q', 11: 'J', 10: 'T' };
+  function cardEl(c, cls) {
+    var d = document.createElement('div');
+    d.className = 'card' + (cls ? ' ' + cls : '');
+    if (!c) { d.className += ' empty'; return d; }
+    var rank = RANK[c.r] || String(c.r);
+    var suit = { s: '♠', h: '♥', d: '♦', c: '♣' }[c.s] || '?';
+    if (c.s === 'h' || c.s === 'd') d.className += ' red';
+    d.textContent = rank + suit;
+    return d;
+  }
+
+  function row(k, v) {
+    var d = document.createElement('div');
+    d.className = 'row';
+    var a = document.createElement('span'); a.className = 'k'; a.textContent = k;
+    var b = document.createElement('span'); b.className = 'v'; b.textContent = v;
+    d.appendChild(a); d.appendChild(b);
+    return d;
+  }
+
+  function sec(t) {
+    var d = document.createElement('div'); d.className = 'sec'; d.textContent = t; return d;
+  }
+
+  var STREET = { preflop: '翻牌前', flop: '翻牌', turn: '转牌', river: '河牌', showdown: '摊牌' };
+  var STATUS = { idle: '未开局', playing: '进行中', showdown: '摊牌', over: '已结束' };
+
+  function render(s) {
+    main.textContent = '';
+
+    main.appendChild(row('状态', (STATUS[s.status] || s.status || '—') +
+      (s.handNo ? ' · 第 ' + s.handNo + ' 手' : '')));
+    main.appendChild(row('牌面', STREET[s.street] || s.street || '—'));
+    main.appendChild(row('底池', fmt(s.pot)));
+    if (s.agentModel) main.appendChild(row('AI 模型', s.agentModel));
+
+    var b = document.createElement('div'); b.className = 'board';
+    var board = s.board || [];
+    for (var i = 0; i < 5; i++) b.appendChild(cardEl(board[i], null));
+    main.appendChild(b);
+
+    if (s.heroHand && s.heroHand.length) {
+      main.appendChild(sec('我的手牌' + (s.heroHandName ? ' · ' + s.heroHandName : '')));
+      var hc = document.createElement('div'); hc.className = 'cards';
+      s.heroHand.forEach(function (c) { hc.appendChild(cardEl(c)); });
+      main.appendChild(hc);
+    }
+
+    main.appendChild(sec('牌桌'));
+    (s.players || []).forEach(function (p) {
+      var d = document.createElement('div');
+      d.className = 'p' + (p.kind === 'human' ? ' hero' : '') + (s.toAct === p.id ? ' turn' : '');
+      var who = document.createElement('span'); who.className = 'who'; who.textContent = p.name || p.id;
+      d.appendChild(who);
+      if (p.kind === 'ai' && p.tag) {
+        var ai = document.createElement('span'); ai.className = 'ai'; ai.textContent = p.tag; d.appendChild(ai);
+      }
+      var act = document.createElement('span'); act.className = 'act';
+      act.textContent = p.talk || p.lastAction || (p.lastThought ? '' : '');
+      d.appendChild(act);
+      var st = document.createElement('span'); st.className = 'stack'; st.textContent = fmt(p.stack);
+      d.appendChild(st);
+      main.appendChild(d);
+    });
+
+    if (s.log && s.log.length) {
+      main.appendChild(sec('牌局日志'));
+      var lg = document.createElement('div'); lg.className = 'log';
+      s.log.slice(-6).forEach(function (line) {
+        var d = document.createElement('div'); d.textContent = line; lg.appendChild(d);
+      });
+      main.appendChild(lg);
+    }
+  }
+
+  function tick() {
+    var alive = Date.now() - lastAt < 4000;
+    beat.className = 'dot' + (alive ? '' : ' stale');
+    beatText.textContent = lastAt ? (alive ? '宿主已连接' : '快照已停') : '未连接';
+  }
+  setInterval(tick, 1000);
+
+  if (window.deskfish && window.deskfish.onState) {
+    window.deskfish.onState(function (msg) {
+      lastAt = Date.now();
+      if (msg && msg.kind === 'snapshot') render(msg.state || {});
+    });
+  }
+})();
+</script>
+</body>
+</html>

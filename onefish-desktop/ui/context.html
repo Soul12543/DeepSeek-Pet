@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:"><title>吃白饭的大肥鱼 · 右键菜单</title><link rel="stylesheet" href="context.css"></head>
+<body><div class="menu" id="menu"><header><strong>吃白饭的大肥鱼</strong><button id="close" aria-label="关闭菜单">×</button></header>
+<button class="action" id="toggle-panel">收起状态面板</button>
+<div class="apps" aria-label="打开应用"><button data-source="codex"><img src="icons/codex.png" alt="" width="24" height="24" draggable="false"><span>Codex</span></button><button data-source="claude"><img src="icons/claude.png" alt="" width="24" height="24" draggable="false"><span>Claude Code</span></button><button data-source="dsh"><img src="icons/dsh.png" alt="" width="24" height="24" draggable="false"><span>DSH</span></button></div>
+<div class="mini-games"><button class="action" data-game="poker">♠ 德州扑克</button><button class="action" data-game="tarot">✦ 塔罗牌</button></div>
+<section class="size-control"><label for="size">鱼的大小</label><input id="size" type="range" step="1" aria-label="连续调整鱼的大小"><div class="bounds"><span>小</span><span>大</span></div></section>
+<button class="action disclosure" id="animations" aria-expanded="false"><span>选择表情</span><span id="animation-arrow">⌄</span></button>
+<section id="animation-browser" hidden><input id="search" type="search" placeholder="找一个表情…" aria-label="搜索表情"><div id="animation-list" class="animation-list"></div></section>
+<label class="action fixed"><span>固定位置</span><input id="fixed" type="checkbox" role="switch" aria-label="固定位置"></label>
+<label class="action fixed"><span id="backlight-label">键盘灯效</span><input id="backlight" type="checkbox" role="switch" aria-label="任务键盘灯效"></label>
+<button class="action" id="reset">回到屏幕右上方</button>
+<footer><button class="action quit" id="quit">退出</button></footer></div><script src="context.js"></script></body></html>

@@ -1,0 +1,4 @@
+# dsh-deskfish 的 bundle patch
+- insert:
+    - id: dsh-deskfish
+      name: 'dsh-deskfish'

@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/BubblePtr/dsh-holdem",
+  "version": "0.4.0",
+  "source": "本项目已有的 dsh-holdem-patched",
+  "changes": [
+    "createTable 可指定独立头像目录，避免依赖 DSH 设置",
+    "修复人类玩家在无需跟注时点击弃牌被转换成过牌；保留本地对手的原策略",
+    "createTable 可指定本地对手行动等待时间，独立版为 1600ms",
+    "导出原有五张/七张评估函数给牌型提示复用",
+    "摊牌时不再显示已经弃牌的对手底牌，与上游亮牌规则保持一致"
+  ]
+}
